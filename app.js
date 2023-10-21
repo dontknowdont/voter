@@ -7,12 +7,18 @@ const app = Vue.createApp({
   },
   methods: {
     // upvote: function(){}
-    upvote() {
+    upvote(infoText) {
         console.log(this.submissions[0].votes)
         this.submissions[0].votes++
+        // console.log(infoText)
+        // console.log(event);
     },
+    logConsole(text){
+        console.log(text);
+    }
   }
 });
+
 
 // # Repreäsentiert eine ID
 // Liefert eine Instanz zur Root-Component zurück

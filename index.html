@@ -34,10 +34,20 @@
                 <!-- <h5 v-once> -->
                   <h5>
                   {{submissions[0].title}}
+<!-- Mehrere Event Handler. Eher unüblich zu verwenden, aber trotzdem möglich! -->
+
+                  <!-- <span 
+                  class="float-end text-primary" 
+                  style="cursor: pointer"
+                  v-on:click.right="upvote(), logConsole('Stimme abgegeben!')"
+                    ><i class="fa fa-chevron-up"></i>
+                    <strong>{{submissions[0].votes}}</strong></span
+                  > -->
+
                   <span 
                   class="float-end text-primary" 
                   style="cursor: pointer"
-                  v-on:click="upvote"
+                  v-on:click.right="upvote()"
                     ><i class="fa fa-chevron-up"></i>
                     <strong>{{submissions[0].votes}}</strong></span
                   >
