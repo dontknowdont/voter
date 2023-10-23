@@ -3,6 +3,7 @@ const app = Vue.createApp({
   data: function () {
     return {
       submissions: submissions, // aus seed.js
+      totalVotes: 0,
     };
   },
   computed: {
@@ -30,6 +31,16 @@ const app = Vue.createApp({
     //   }, 0)
     // }
   },
+  watch: {
+    // submissions(newValue, oldValue){
+    //   console.log('newValue');
+    //   console.log('oldValue');
+    // }
+    totalVotes(newValue, oldValue){
+      console.log('newValue', newValue);
+      console.log('oldValue', oldValue);
+    }
+  }
 });
 
 // # Repreäsentiert eine ID
