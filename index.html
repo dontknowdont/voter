@@ -17,26 +17,31 @@
     ></script>
   </head>
   <body>
-<div id="app">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xl-4 offset-xl-4">
-        <div class="card mt-5">
-          <div class="card-header">
-            <h2 class="card-title">Stimme jetzt ab!</h2>
-          </div>
-          <div class="card-body">
-            <div class="d-flex">
-              <div class="d-shrink-0">
-                <img v-bind:src="submissions[0].img" />
+    <div id="app">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-4 offset-xl-4">
+            <div class="card mt-5">
+              <div class="card-header">
+                <h2 class="card-title">
+                  Stimme jetzt ab!
+                  <!-- Wenn Computed, dann keine Klammer -->
+                  <!-- Wenn Methods, dann Klammer -->
+                  <span class="float-end">{{totalVotes}} Stimmen</span>
+                </h2>
               </div>
-              <div class="flex-grow-1 ms-3">
-                <!-- <h5 v-once> -->
-                  <h5>
-                  {{submissions[0].title}}
-<!-- Mehrere Event Handler. Eher unüblich zu verwenden, aber trotzdem möglich! -->
+              <div class="card-body">
+                <div class="d-flex">
+                  <div class="d-shrink-0">
+                    <img v-bind:src="submissions[0].img" />
+                  </div>
+                  <div class="flex-grow-1 ms-3">
+                    <!-- <h5 v-once> -->
+                    <h5>
+                      {{submissions[0].title}}
+                      <!-- Mehrere Event Handler. Eher unüblich zu verwenden, aber trotzdem möglich! -->
 
-                  <!-- <span 
+                      <!-- <span 
                   class="float-end text-primary" 
                   style="cursor: pointer"
                   v-on:click.right="upvote(), logConsole('Stimme abgegeben!')"
@@ -44,24 +49,28 @@
                     <strong>{{submissions[0].votes}}</strong></span
                   > -->
 
-                  <span 
-                  class="float-end text-primary" 
-                  style="cursor: pointer"
-                  v-on:click.right="upvote()"
-                    ><i class="fa fa-chevron-up"></i>
-                    <strong>{{submissions[0].votes}}</strong></span
-                  >
-                </h5>
-                <div v-html="submissions[0].desc">{{submissions[0].desc}}</div>
-                <small class="text-muted">Eingereicht von: {{submissions[0].author}}</small>
+                      <span
+                        class="float-end text-primary"
+                        style="cursor: pointer"
+                        v-on:click="upvote()"
+                        ><i class="fa fa-chevron-up"></i>
+                        <strong>{{submissions[0].votes}}</strong></span
+                      >
+                    </h5>
+                    <div v-html="submissions[0].desc">
+                      {{submissions[0].desc}}
+                    </div>
+                    <small class="text-muted"
+                      >Eingereicht von: {{submissions[0].author}}</small
+                    >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
     <!-- Aktuelleste Version von Vue.js
         <script src="https://unpkg.com/vue@next"></script>
     -->
