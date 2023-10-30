@@ -58,6 +58,11 @@
                       >
                     </h5>
                     <div v-html="submission.desc">{{submission.desc}}</div>
+                    <ul>
+                      <li v-for="(value, key, index) in submission">
+                       {{index}} - {{key}} - {{value}}
+                      </li>
+                    </ul>
                     <small class="text-muted"
                       >Eingereicht von: {{submission.author}}</small
                     >
