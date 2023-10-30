@@ -31,7 +31,7 @@
                 </h2>
               </div>
               <div class="card-body">
-                <div class="d-flex" v-for="(submission, index) in submissions">
+                <div class="d-flex" v-for="(submission, index) in submissions" :key="submission.id">
                   <div class="d-shrink-0">
                     <img v-bind:src="submission.img" />
                   </div>
@@ -58,14 +58,15 @@
                       >
                     </h5>
                     <div v-html="submission.desc">{{submission.desc}}</div>
-                    <ul>
+                    <!-- <ul>
                       <li v-for="(value, key, index) in submission">
                        {{index}} - {{key}} - {{value}}
                       </li>
-                    </ul>
+                    </ul> -->
                     <small class="text-muted"
                       >Eingereicht von: {{submission.author}}</small
                     >
+                    <!-- <input type="text"> -->
                   </div>
                 </div>
               </div>
