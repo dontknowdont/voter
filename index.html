@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-xl-4 offset-xl-4">
             <div class="card mt-5">
-              <div class="card-header">
+              <div class="card-header" :class="cardHeaderBackgroundColor">
                 <h2 class="card-title">
                   Stimme jetzt ab!
                   <!-- Wenn Computed, dann keine Klammer -->
@@ -42,7 +42,7 @@
                     <div class="flex-grow-1 ms-3">
                       <!-- <h5 v-once> -->
                       <h5>
-                        {{submission.title}} {{index}}
+                        {{submission.title}} <!--  {{index}} -->
                         <!-- Mehrere Event Handler. Eher unüblich zu verwenden, aber trotzdem möglich! -->
 
                         <!-- <span 

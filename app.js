@@ -3,20 +3,29 @@ const app = Vue.createApp({
   data: function () {
     return {
       submissions: submissions, // aus seed.js
-      totalVotes: 0,
+      // totalVotes: 0,
     };
   },
   computed: {
-    // totalVotes() {
-    // console.log('Computed Property ausgeführt');
-    //   return this.submissions.reduce((totalVotes, submission) => {
-    //     return totalVotes + submission.votes;
-    //   }, 0);
-    // },
+    totalVotes() {
+      // console.log('Computed Property ausgeführt');
+      return this.submissions.reduce((totalVotes, submission) => {
+        return totalVotes + submission.votes;
+      }, 0);
+    },
     sortedSubmissions() {
       return this.submissions.sort((a, b) => {
         return b.votes - a.votes;
       });
+    },
+    cardHeaderBackgroundColor() {
+      return {
+        "bg-primary": this.totalVotes >= 50,
+        "text-white": this.totalVotes >= 50,
+
+        // Alternative
+        // "bg-primary text-white": this.totalVotes >= 50;
+      };
     },
   },
   methods: {
@@ -32,9 +41,11 @@ const app = Vue.createApp({
       // console.log(infoText)
       // console.log(event);
     },
-    logConsole(text) {
-      console.log(text);
-    },
+
+    // logConsole(text) {
+    //   console.log(text);
+    // },
+
     // totalVotes(){
     //  return this.submissions.reduce((totalVotes, submission) => {
     //     return totalVotes + submission.votes
@@ -46,21 +57,21 @@ const app = Vue.createApp({
     //   console.log('newValue');
     //   console.log('oldValue');
     // }
-    submissions: {
-      handler(newValue, oldValue) {
-        // console.log('newValue', newValue);
-        // console.log('oldValue', oldValue);
-        this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
-          return totalVotes + submission.votes;
-        }, 0);
-      },
-      deep: true,
-      immediate: true,
-    },
-    totalVotes(newValue, oldValue) {
-      console.log("newValue", newValue);
-      console.log("oldValue", oldValue);
-    },
+    // submissions: {
+    //   handler(newValue, oldValue) {
+    //     // console.log('newValue', newValue);
+    //     // console.log('oldValue', oldValue);
+    //     this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
+    //       return totalVotes + submission.votes;
+    //     }, 0);
+    //   },
+    //   deep: true,
+    //   immediate: true,
+    // },
+    // totalVotes(newValue, oldValue) {
+    //   console.log("newValue", newValue);
+    //   console.log("oldValue", oldValue);
+    // },
   },
 });
 
