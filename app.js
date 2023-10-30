@@ -7,11 +7,16 @@ const app = Vue.createApp({
     };
   },
   computed: {
-    totalVotes() {
-    console.log('Computed Property ausgeführt');
-      return this.submissions.reduce((totalVotes, submission) => {
-        return totalVotes + submission.votes;
-      }, 0);
+    // totalVotes() {
+    // console.log('Computed Property ausgeführt');
+    //   return this.submissions.reduce((totalVotes, submission) => {
+    //     return totalVotes + submission.votes;
+    //   }, 0);
+    // },
+    sortedSubmissions() {
+      return this.submissions.sort((a, b) => {
+        return b.votes - a.votes;
+      });
     },
   },
   methods: {
@@ -37,34 +42,33 @@ const app = Vue.createApp({
     //   console.log('oldValue');
     // }
     submissions: {
-      handler(newValue, oldValue){
+      handler(newValue, oldValue) {
         // console.log('newValue', newValue);
         // console.log('oldValue', oldValue);
-      this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
-        return totalVotes + submission.votes
-      },0)
+        this.totalVotes = this.submissions.reduce((totalVotes, submission) => {
+          return totalVotes + submission.votes;
+        }, 0);
       },
       deep: true,
-      immediate: true
+      immediate: true,
     },
-    totalVotes(newValue, oldValue){
-      console.log('newValue', newValue);
-      console.log('oldValue', oldValue);
-    }
-  }
+    totalVotes(newValue, oldValue) {
+      console.log("newValue", newValue);
+      console.log("oldValue", oldValue);
+    },
+  },
 });
 
 // # Repreäsentiert eine ID
 // Liefert eine Instanz zur Root-Component zurück
 const vm = app.mount("#app");
 
-
 // Computed
 // Wenn abhängige Daten geändert werden
 // Daten, welche von anderen Daten abhängig sind
 
 // Mehtods
-// Wenn "sichtbare" Daten geändert werden, 
+// Wenn "sichtbare" Daten geändert werden,
 // d.h. das, dass Template neu gerendert werden muss
 // Event-Listener ("clicks") oder für Daten die sich permanent ändern
 
