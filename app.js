@@ -19,13 +19,15 @@ const app = Vue.createApp({
       });
     },
     cardHeaderBackgroundColor() {
-      return {
-        "bg-primary": this.totalVotes >= 50,
-        "text-white": this.totalVotes >= 50,
-
-        // Alternative
-        // "bg-primary text-white": this.totalVotes >= 50;
-      };
+      // return {
+      //   "bg-primary": this.totalVotes >= 50,
+      //   "text-white": this.totalVotes >= 50,
+      //   Alternative
+      //   "bg-primary text-white": this.totalVotes >= 50;
+      // };
+      if (this.totalVotes >= 50) {
+        return ["bg-primary", "text-white"];
+      }
     },
   },
   methods: {
